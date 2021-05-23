@@ -13,7 +13,8 @@ const GITHUB_API_URL = 'https://api.github.com'
 
 module.exports = function signup(message) {
   try {
-    const [username, address] = parseAddAddress(message.content)
+    const [, address] = parseAddAddress(message.content)
+    const username = message.author.username
 
     fetch(
       `${GITHUB_API_URL}/repos/${environment('GITHUB_ADDRESS_FILE_PATH')}`,
